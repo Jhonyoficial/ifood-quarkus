@@ -8,3 +8,12 @@ services:
       POSTGRES_PASSWORD: 123
     ports:
       - "5432:5432"
+
+  pgadmin:
+    container_name: pgadmin_ifood
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@ifood.com
+      PGADMIN_DEFAULT_PASSWORD: 123
+    ports:
+      - "5050:5050"
