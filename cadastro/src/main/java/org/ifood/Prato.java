@@ -18,6 +18,9 @@ public class Prato extends PanacheEntityBase {
     @Column(name = "ds_nome_prato")
     public String dsNomePrato;
 
+    @Column(name = "descricao")
+    public String descricao;
+
     @ManyToOne
     @JoinColumn(name = "id_restaurante")
     public Restaurante restaurante;

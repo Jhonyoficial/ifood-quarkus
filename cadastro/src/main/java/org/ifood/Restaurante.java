@@ -29,6 +29,6 @@ public class Restaurante extends PanacheEntityBase {
     @Column(name = "dt_atualizacao")
     public LocalDate dtAtualizacao;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @OneToOne(cascade = CascadeType.ALL)
     public Localizacao localizacao;
 }
