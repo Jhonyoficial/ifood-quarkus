@@ -1,8 +1,7 @@
-package org.ifood;
+package org.ifood.model;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import jakarta.persistence.*;
-import net.bytebuddy.build.HashCodeAndEqualsPlugin;
 
 import java.math.BigDecimal;
 
@@ -17,6 +16,9 @@ public class Prato extends PanacheEntityBase {
 
     @Column(name = "ds_nome_prato")
     public String dsNomePrato;
+
+    @Column(name = "descricao")
+    public String descricao;
 
     @ManyToOne
     @JoinColumn(name = "id_restaurante")

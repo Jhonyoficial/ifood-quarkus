@@ -1,4 +1,4 @@
-package org.ifood;
+package org.ifood.model;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import jakarta.persistence.*;

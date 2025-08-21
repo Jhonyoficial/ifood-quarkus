@@ -1,4 +1,4 @@
-package org.ifood;
+package org.ifood.model;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import jakarta.persistence.*;
@@ -29,6 +29,6 @@ public class Restaurante extends PanacheEntityBase {
     @Column(name = "dt_atualizacao")
     public LocalDate dtAtualizacao;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @OneToOne(cascade = CascadeType.ALL)
     public Localizacao localizacao;
 }
