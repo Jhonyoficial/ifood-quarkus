@@ -1,6 +1,6 @@
 package org.ifood;
 
-import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
+
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.*;
@@ -9,6 +9,8 @@ import jakarta.ws.rs.core.Response;
 import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 import org.ifood.dto.RestauranteDTO;
 import org.ifood.dto.RestauranteMapper;
+import org.ifood.model.Prato;
+import org.ifood.model.Restaurante;
 
 import java.beans.Transient;
 import java.util.List;
