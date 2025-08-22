@@ -143,7 +143,6 @@ public class RestauranteResource {
         }
 
         pratoOp.get().delete();
-
         return Response.ok().build();
     }
 }
