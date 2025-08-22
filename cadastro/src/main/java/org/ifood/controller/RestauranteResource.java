@@ -47,6 +47,7 @@ public class RestauranteResource {
 
     @PUT
     @Path("{id}")
+    @Transactional
     @Tag(name = "restaurante")
     public Response alterarRestaurante(@PathParam("id") Integer idRestaurante, RestauranteDTO dto) {
         Optional<Restaurante> restauranteOp = Restaurante.findByIdOptional(idRestaurante);
@@ -63,6 +64,7 @@ public class RestauranteResource {
 
     @DELETE
     @Path("{id}")
+    @Transactional
     @Tag(name = "restaurante")
     public Response deletarRestaurante(@PathParam("id") Integer idRestaurante) {
         Optional<Restaurante> restauranteOp = Restaurante.findByIdOptional(idRestaurante);
@@ -91,6 +93,7 @@ public class RestauranteResource {
 
     @POST
     @Path("{idRestaurante}/pratos")
+    @Transactional
     @Tag(name = "prato")
     public Response adicionarPrato(@PathParam("idRestaurante") Long idRestaurante, PratoDTO dto) {
         Optional<Restaurante> restauranteOp = Restaurante.findByIdOptional(idRestaurante);
@@ -105,11 +108,12 @@ public class RestauranteResource {
         prato.restaurante = restauranteOp.get();
         prato.persist();
 
-        return Response.ok(Response.Status.CREATED).build();
+        return Response.ok().build();
     }
 
     @PUT
     @Path("{idRestaurante}/pratos/{idPrato}")
+    @Transactional
     @Tag(name = "prato")
     public Response atualizarPrato(@PathParam("idRestaurante") Long idRestaurante, @PathParam("idPrato") Long idPrato, PratoDTO dto) {
         Optional<Restaurante> restauranteOp = Restaurante.findByIdOptional(idRestaurante);
@@ -122,6 +126,7 @@ public class RestauranteResource {
             throw new NotFoundException("Prato não encontrato");
         }
         pratoOp.get().dsNomePrato = dto.dsNomePrato;
+        pratoOp.get().descricao = dto.descricao;
         pratoOp.get().nmValor = dto.nmValor;
         pratoOp.get().persist();
 
@@ -130,6 +135,7 @@ public class RestauranteResource {
 
     @DELETE
     @Path("{idRestaurante}/pratos/{idPrato}")
+    @Transactional
     @Tag(name = "prato")
     public Response deletarPrato(@PathParam("idRestaurante")  Long idRestaurante, @PathParam("idPrato") Long idPrato) {
         Optional<Restaurante> restauranteOp = Restaurante.findByIdOptional(idRestaurante);
