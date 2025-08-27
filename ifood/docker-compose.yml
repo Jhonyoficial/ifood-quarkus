@@ -9,6 +9,11 @@ services:
       POSTGRES_DB: ifood
     ports:
       - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
 
   pgadmin:
     container_name: pgadmin_ifood
@@ -18,3 +23,23 @@ services:
       PGADMIN_DEFAULT_PASSWORD: 123
     ports:
       - "5050:5050"
+
+  keycloak_ifood:
+    container_name: keycloak_ifood
+    image: quay.io/keycloak/keycloak:26.3.0
+    environment:
+      KC_DB: postgres
+      KC_DB_URL_HOST: postgres_cadastro
+      KC_DB_URL_DATABASE: ifood
+      KC_DB_USERNAME: postgres
+      KC_DB_PASSWORD: 123
+      KC_HTTP_PORT: 8080
+      KC_HTTP_ENABLED: 'true'
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+    command: start-dev
+    ports:
+      - "8181:8080"
+    depends_on:
+      postgres_cadastro:
+        condition: service_healthy

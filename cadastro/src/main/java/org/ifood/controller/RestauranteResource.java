@@ -3,6 +3,7 @@ package org.ifood.controller;
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
+import jakarta.validation.Valid;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
@@ -38,7 +39,7 @@ public class RestauranteResource {
     @POST
     @Transactional
     @Tag(name = "restaurante")
-    public Response adicionarRestaurante(RestauranteDTO dto) {
+    public Response adicionarRestaurante(@Valid RestauranteDTO dto) {
         Restaurante restaurante = restauranteMapper.toRestaurante(dto);
         restaurante.persist();
         RestauranteDTO restauranteDTO = restauranteMapper.toRestauranteDTO(restaurante);
@@ -49,7 +50,7 @@ public class RestauranteResource {
     @Path("{id}")
     @Transactional
     @Tag(name = "restaurante")
-    public Response alterarRestaurante(@PathParam("id") Integer idRestaurante, RestauranteDTO dto) {
+    public Response alterarRestaurante(@PathParam("id") Integer idRestaurante, @Valid RestauranteDTO dto) {
         Optional<Restaurante> restauranteOp = Restaurante.findByIdOptional(idRestaurante);
 
         if (restauranteOp.isEmpty()) {
