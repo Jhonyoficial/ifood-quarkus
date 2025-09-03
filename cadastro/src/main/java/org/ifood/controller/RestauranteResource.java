@@ -1,5 +1,7 @@
 package org.ifood.controller;
 
+import io.micrometer.core.annotation.Counted;
+import io.micrometer.core.annotation.Timed;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
@@ -16,6 +18,7 @@ import org.ifood.model.Restaurante;
 
 import java.util.List;
 import java.util.Optional;
+
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 @Path("restaurante")
@@ -29,6 +32,8 @@ public class RestauranteResource {
 
     @GET
     @Tag(name = "restaurante")
+    @Counted(value = "contador_chamada", description = "Número de chamadas ao endpoint de restaurantes")
+    @Timed(value = "tempo_checado", description = "Tempo gasto para listar restaurantes")
     public Response listarTodosRestaurantes() {
         List<Restaurante> listaRestaurante = Restaurante.listAll();
         List<RestauranteDTO> restauranteDTO = restauranteMapper.toRestauranteDTO(listaRestaurante);
