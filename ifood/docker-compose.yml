@@ -29,3 +29,16 @@ services:
       - "4317:4317"
       - "4318:4318"
 
+  prometheus_ifood:
+    container_name: prometheus_ifood
+    image: "prom/prometheus:v3.5.0"
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+
+  grafana_ifood:
+    container_name: grafana_ifood
+    image: grafana/grafana:nightly-ubuntu
+    ports:
+      - "3000:3000"
