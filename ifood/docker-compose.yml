@@ -10,6 +10,16 @@ services:
     ports:
       - "5432:5432"
 
+  postgres_marketplace:
+    container_name: postgres_marketplace_ifood
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123
+      POSTGRES_DB: ifood
+    ports:
+      - "5433:5432"
+
   pgadmin:
     container_name: pgadmin_ifood
     image: dpage/pgadmin4

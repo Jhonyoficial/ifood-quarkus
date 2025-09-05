@@ -24,6 +24,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="cadastro" options="-parameters" />
+      <module name="core" options="" />
       <module name="ifood" options="-parameters" />
       <module name="marketplace" options="-parameters" />
       <module name="notificacao" options="-parameters" />
