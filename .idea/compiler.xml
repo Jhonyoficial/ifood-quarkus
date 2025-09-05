@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="marketplace" />
         <module name="notificacao" />
+        <module name="core" />
       </profile>
       <profile name="Annotation profile for ifood" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
@@ -24,7 +25,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="cadastro" options="-parameters" />
-      <module name="core" options="" />
+      <module name="core" options="-parameters" />
       <module name="ifood" options="-parameters" />
       <module name="marketplace" options="-parameters" />
       <module name="notificacao" options="-parameters" />
